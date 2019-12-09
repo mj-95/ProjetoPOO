@@ -15,24 +15,33 @@ public class Projeto {
     private String nome;
     private String acronimo;
     private Data dataInic;
+    private boolean estado;
     private int duracaoEstimada;
     private Data dataFim;
     private Docente invPrinc;
     private ArrayList<Pessoa> Pessoas;
     private ArrayList<Tarefa> Tarefas;
 
-    public Projeto(String nome, String acronimo, Data dataInic, Data dataFim, int duracaoEstimada, Docente invPrinc, ArrayList<Pessoa> Pessoas) {
+    public Projeto(String nome, String acronimo, Data dataInic, int duracaoEstimada, Docente invPrinc, ArrayList<Pessoa> Pessoas) {
         this.nome = nome;
         this.acronimo = acronimo;
         this.dataInic = dataInic;
-        this.dataFim = dataFim;
         this.duracaoEstimada = duracaoEstimada;
         this.invPrinc = invPrinc;
         this.Pessoas = Pessoas;
+        this.estado = false;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public void setNome(String nome) {
