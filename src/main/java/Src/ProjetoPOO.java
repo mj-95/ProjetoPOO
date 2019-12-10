@@ -1379,7 +1379,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                     
                     Bolseiro bolseiro= (Bolseiro) pessoas.get(j);
                     if(bolseiro.getCustoProjeto()==0){
-                        dd[aux2] = (pessoas.get(j).getNome());
+                        dd[aux2] = (pessoas.get(j).getNome()) +" - "+ pessoas.get(j).getTipoBols();
                         aux2++;
                         
                     }
@@ -1419,21 +1419,23 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
             for (int i=0;i<aux1.size();i++){
                 for (int j=0;j<pessoas.size();j++){
-                    if(pessoas.get(j).getNome().equals(aux1.get(i))){
+                    if(pessoas.get(j).getNome().equals(aux1.get(i).split(" - ")[0])){
+                        pessoas.get(j).setCusto(Integer.parseInt(cpDuracaoprev.getText()));
                         pp.add(pessoas.get(j));
+                        
                     }
                 }
             }
             for (int i=0;i<aux2.size();i++){
                 for (int j=0;j<pessoas.size();j++){
-                    if(pessoas.get(j).getNome().equals(aux2.get(i))){
+                    if(pessoas.get(j).getNome().equals(aux2.get(i)) && !aux2.get(i).equals(addInvPrinc.getSelectedItem())){
                         pp.add(pessoas.get(j));
                     }
                 }
             }
             for (int i =0;i<auxPessoas.length;i++){
                 for(int j =0;j<pessoas.size();j++){
-                    if(pessoas.get(j).getNome().equals(addBols.getSelectedValuesList().get(i))){
+                    if(pessoas.get(j).getNome().equals(addBols.getSelectedValuesList().get(i).split(" - ")[0])){
                         if(pessoas.get(j).getTipoBols().equals("L")){
                             pessoas.get(j).setDocentes(auxPessoas[i]);
                         }
@@ -1503,10 +1505,14 @@ public class ProjetoPOO extends javax.swing.JFrame {
         if(addInvPrinc.getSelectedItem()!= null && !addInvest.getSelectedValuesList().isEmpty() && !addBols.getSelectedValuesList().isEmpty()){
             int aux = 0;
             List<String> d = addBols.getSelectedValuesList();
+            List<String> d2;
             String dd[] = new String[d.size()];
             
             for(int j=0;j<d.size();j++){
-                dd[j] = d.get(j);
+                if(!d.get(j).split(" - ")[1].equals("Dou")){
+                    dd[aux] = d.get(j).split(" - ")[0];
+                    aux++;
+                }
             }
             
             SelecBolseiro.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
@@ -1523,7 +1529,14 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
             
             SelecOrientadorLista.setListData(dd);
-            auxPessoas= new ArrayList[addBols.getSelectedValuesList().size()];
+            d = addBols.getSelectedValuesList();
+            d2 = new ArrayList<>();
+            for(int i=0;i<d.size();i++){
+                if(!d.get(i).split(" - ")[1].equals("Dou")){
+                    d2.add(d.get(i));
+                }
+            }
+            auxPessoas= new ArrayList[d2.size()];
 
             
             CriarProjeto2.setVisible(false);
@@ -1569,17 +1582,23 @@ public class ProjetoPOO extends javax.swing.JFrame {
         
         int aux;
         if(!SelecOrientadorLista.getSelectedValuesList().isEmpty() && SelecBolseiro.getSelectedItem()!= null){
-            List <String> d = SelecOrientadorLista.getSelectedValuesList();
-            List <String> dd = addBols.getSelectedValuesList();
-            aux = dd.indexOf((String)SelecBolseiro.getSelectedItem());
-            for(int i=0;i<d.size();i++){
+            List <String> d1 = addBols.getSelectedValuesList();
+            List <String> d2 = new ArrayList<String>();            
+            List <String> dd = SelecOrientadorLista.getSelectedValuesList();
+            d1.remove((String)addInvPrinc.getSelectedItem());
+            for(int i=0;i<d1.size();i++){
+                d2.add(d1.get(i).split(" - ")[0]);
+            }
+            
+            aux = d2.indexOf((String)SelecBolseiro.getSelectedItem());
+            for(int i=0;i<dd.size();i++){
                 if(auxPessoas[aux] != null){
-                    if(!auxPessoas[aux].contains(d.get(i))){
-                        auxPessoas[aux].add(d.get(i));
+                    if(!auxPessoas[aux].contains(dd.get(i))){
+                        auxPessoas[aux].add(dd.get(i));
                     }
                 }else{
                     auxPessoas[aux]= new ArrayList<>();
-                    auxPessoas[aux].add(d.get(i));
+                    auxPessoas[aux].add(dd.get(i));
                 }
             }
         }

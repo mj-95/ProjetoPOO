@@ -52,8 +52,8 @@ public abstract class Bolseiro extends Pessoa implements Serializable{
         return custoProjeto;
     }
 
-    public void setCustoProjeto(int custoProjeto) {
-        this.custoProjeto = custoProjeto;
+    public void setCusto(int durac) {
+        this.custoProjeto = durac * this.getCusto();
     }
 
     public String getNome() {

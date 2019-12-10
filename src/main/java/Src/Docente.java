@@ -33,6 +33,8 @@ public class Docente extends Pessoa implements Serializable {
     public int getCusto(){
         return 0;
     }
+    public void setCusto(int custo){}
+
 
     public String getAreaInvestigacao() {
         return areaInvestigacao;
