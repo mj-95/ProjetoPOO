@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class ProjetoPOO extends javax.swing.JFrame {
     
     protected ArrayList <Pessoa> pessoas;
+    protected Projeto projetoSelec;
     protected ArrayList <Projeto> projetos;
     protected ArrayList <String> auxPessoas[];
     
@@ -60,7 +61,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
         ProcurarProjeto = new javax.swing.JPanel();
         Título1 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ProcurarProjetoNome = new javax.swing.JComboBox<>();
         VoltarProcurarProj = new javax.swing.JButton();
         SeguinteProcurarProj = new javax.swing.JButton();
         AlterarTarefa = new javax.swing.JPanel();
@@ -254,15 +255,20 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
         jLabel15.setText("Selecionar Projeto:");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ProcurarProjetoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ProcurarProjetoNomeActionPerformed(evt);
             }
         });
 
         VoltarProcurarProj.setText("Voltar");
 
         SeguinteProcurarProj.setText("Seguinte");
+        SeguinteProcurarProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeguinteProcurarProjActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ProcurarProjetoLayout = new javax.swing.GroupLayout(ProcurarProjeto);
         ProcurarProjeto.setLayout(ProcurarProjetoLayout);
@@ -276,7 +282,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addGap(130, 130, 130)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProcurarProjetoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
             .addGroup(ProcurarProjetoLayout.createSequentialGroup()
                 .addContainerGap()
@@ -296,7 +302,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                         .addGap(138, 138, 138)
                         .addGroup(ProcurarProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ProcurarProjetoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
                 .addGroup(ProcurarProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VoltarProcurarProj)
@@ -1173,6 +1179,19 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_cpNomeActionPerformed
 
     private void ProcurarProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcurarProjActionPerformed
+        String dd[] = new String[projetos.size()];
+
+        for(int i=0;i<projetos.size();i++){
+            if (!projetos.get(i).isEstado()){
+                dd[i] = projetos.get(i).getNome() + " - Não Concluído";
+            }
+            else {
+                dd[i] = projetos.get(i).getNome() + " - Concluído";
+
+            }
+        }
+        ProcurarProjetoNome.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
+
         MenuPrincipal.setVisible(false);
         ProcurarProjeto.setVisible(true);
     }//GEN-LAST:event_ProcurarProjActionPerformed
@@ -1303,43 +1322,54 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
     private void FinalizarCriarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarCriarProjetoActionPerformed
         ArrayList<Pessoa> pp = new ArrayList<>();
-        List<String> aux1 = addBols.getSelectedValuesList();
-        List<String> aux2 = addInvest.getSelectedValuesList();
-
-        Docente docente = null;
-        for (int i=0;i<pessoas.size();i++){
-            if(pessoas.get(i).getNome().equals(addInvPrinc.getSelectedItem())){
-                docente = (Docente) pessoas.get(i);
-                break;
+        List<String> aux1;
+        List<String> aux2;
+        int k=0;
+        for(int i=0;i<auxPessoas.length;i++){
+            if(auxPessoas[i] == null){
+                k++;
             }
         }
-        for (int i=0;i<aux1.size();i++){
-            for (int j=0;j<pessoas.size();j++){
-                if(pessoas.get(j).getNome().equals(aux1.get(i))){
-                    pp.add(pessoas.get(j));
+        if(k==0){
+            aux1 = addBols.getSelectedValuesList();
+            aux2 = addInvest.getSelectedValuesList();
+            Docente docente = null;
+            for (int i=0;i<pessoas.size();i++){
+                if(pessoas.get(i).getNome().equals(addInvPrinc.getSelectedItem())){
+                    docente = (Docente) pessoas.get(i);
+                    break;
                 }
             }
-        }
-        for (int i=0;i<aux2.size();i++){
-            for (int j=0;j<pessoas.size();j++){
-                if(pessoas.get(j).getNome().equals(aux2.get(i))){
-                    pp.add(pessoas.get(j));
-                }
-            }
-        }
-        for (int i =0;i<auxPessoas.length;i++){
-            for(int j =0;j<pessoas.size();j++){
-                if(pessoas.get(j).getNome().equals(addBols.getSelectedValuesList().get(i))){
-                    if(pessoas.get(j).getTipoBols().equals("L")){
-                        pessoas.get(j).setDocentes(auxPessoas[i]);
+            for (int i=0;i<aux1.size();i++){
+                for (int j=0;j<pessoas.size();j++){
+                    if(pessoas.get(j).getNome().equals(aux1.get(i))){
+                        pp.add(pessoas.get(j));
                     }
                 }
             }
+            for (int i=0;i<aux2.size();i++){
+                for (int j=0;j<pessoas.size();j++){
+                    if(pessoas.get(j).getNome().equals(aux2.get(i))){
+                        pp.add(pessoas.get(j));
+                    }
+                }
+            }
+            for (int i =0;i<auxPessoas.length;i++){
+                for(int j =0;j<pessoas.size();j++){
+                    if(pessoas.get(j).getNome().equals(addBols.getSelectedValuesList().get(i))){
+                        if(pessoas.get(j).getTipoBols().equals("L")){
+                            pessoas.get(j).setDocentes(auxPessoas[i]);
+                        }
+                    }
+                }
+            }
+            Projeto projeto = new Projeto(cpNome.getText(),cpAcronimo.getText(), new Data(Integer.parseInt(cpDiaIn.getText()),Integer.parseInt(cpMesIn.getText()),Integer.parseInt(cpAnoIn.getText())), Integer.parseInt(cpDuracaoprev.getText()), docente, pp);
+            projetos.add(projeto);
+            CriarProjeto3.setVisible(false);
+            MenuPrincipal.setVisible(true);
+            
         }
-        Projeto projeto = new Projeto(cpNome.getText(),cpAcronimo.getText(), new Data(Integer.parseInt(cpDiaIn.getText()),Integer.parseInt(cpMesIn.getText()),Integer.parseInt(cpAnoIn.getText())), Integer.parseInt(cpDuracaoprev.getText()), docente, pp);
-        projetos.add(projeto);
-        CriarProjeto3.setVisible(false);
-        MenuPrincipal.setVisible(true);
+        
     }//GEN-LAST:event_FinalizarCriarProjetoActionPerformed
 
     private void SelecBolseiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecBolseiroActionPerformed
@@ -1359,9 +1389,9 @@ public class ProjetoPOO extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ProcurarProjetoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcurarProjetoNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ProcurarProjetoNomeActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -1479,6 +1509,21 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ConfirmarOrientadorActionPerformed
 
+    private void SeguinteProcurarProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguinteProcurarProjActionPerformed
+        String aux[] = ((String)ProcurarProjetoNome.getSelectedItem()).split(" - ");
+        for(int i=0;i<projetos.size();i++){
+            if(projetos.get(i).getNome().equals(aux[0])){
+                if(projetos.get(i).isEstado()){
+                    ProcurarProjeto.setVisible(false);
+                    MenuProjConc.setVisible(true);
+                }else{
+                    ProcurarProjeto.setVisible(false);
+                    MenuProjNaoConc.setVisible(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_SeguinteProcurarProjActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1591,6 +1636,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JTextField NomeTarefa;
     private javax.swing.JButton ProcurarProj;
     private javax.swing.JPanel ProcurarProjeto;
+    private javax.swing.JComboBox<String> ProcurarProjetoNome;
     private javax.swing.JButton ProjConc;
     private javax.swing.JButton ProjNaoConc;
     private javax.swing.JComboBox<String> ResponsavelTarefa;
@@ -1640,7 +1686,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
