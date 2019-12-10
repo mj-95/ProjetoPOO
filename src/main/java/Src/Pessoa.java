@@ -33,7 +33,10 @@ public abstract class Pessoa implements Serializable{
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public abstract void setDocentes(ArrayList<String> docentes);
     
+    public abstract String getTipoBols();
+
     public abstract String getTipo();
     
     public void setEmail(String email) {

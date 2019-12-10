@@ -6,12 +6,13 @@
 package Src;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author maria
  */
-public class Bolseiro extends Pessoa implements Serializable{
+public abstract class Bolseiro extends Pessoa implements Serializable{
     protected Data dataInicBolsa;
     protected Data dataFinBolsa;
     protected int custoProjeto;
@@ -25,10 +26,11 @@ public class Bolseiro extends Pessoa implements Serializable{
     public Bolseiro(String nome, String email) {
         super(nome, email);
     }
-    
+    public abstract void setDocentes(ArrayList<String> docentes);
     public String getTipo(){
         return "B";
     }
+    public abstract String getTipoBols();
 
     public Data getDataInicBolsa() {
         return dataInicBolsa;

@@ -22,11 +22,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
     
     protected ArrayList <Pessoa> pessoas;
     protected ArrayList <Projeto> projetos;
+    protected ArrayList <String> auxPessoas[];
     
     public ProjetoPOO() throws IOException {
         pessoas = new ArrayList<>();
         projetos = new ArrayList<>();
-
         lerPessoas(pessoas);
         /*
         try{
@@ -976,7 +976,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
         jLabel24.setText("Adicionar Investigadores:");
 
-        jLabel25.setText("Adicionar Bolseiros:");
+        jLabel25.setText("Adicionar Bolseiros Disponíveis:");
 
         invest.setViewportView(addInvest);
 
@@ -1011,17 +1011,12 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CriarProjeto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(invest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CriarProjeto2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CriarProjeto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CriarProjeto2Layout.createSequentialGroup()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CriarProjeto2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72))))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
             .addGroup(CriarProjeto2Layout.createSequentialGroup()
                 .addGroup(CriarProjeto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CriarProjeto2Layout.createSequentialGroup()
@@ -1091,6 +1086,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         });
 
         ConfirmarOrientador.setText("OK");
+        ConfirmarOrientador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmarOrientadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CriarProjeto3Layout = new javax.swing.GroupLayout(CriarProjeto3);
         CriarProjeto3.setLayout(CriarProjeto3Layout);
@@ -1262,7 +1262,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                     aux2++;
                 }
             }
-            SelecOrientadorLista.setListData(dd);
+            addInvest.setListData(dd);
             
             aux2 = 0;
             dd = new String[pessoas.size()];
@@ -1273,7 +1273,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                     aux2++;
                 }
             }
-            SelecBolseiro.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
+            addInvPrinc.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
             
             aux2 = 0;
             dd = new String[pessoas.size()];
@@ -1293,7 +1293,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
             addBols.setListData(dd);
             
             CriarProjeto.setVisible(false);
-            CriarProjeto3.setVisible(true);
+            CriarProjeto2.setVisible(true);
         }
     }//GEN-LAST:event_SeguinteCriarProjActionPerformed
 
@@ -1304,11 +1304,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private void FinalizarCriarProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarCriarProjetoActionPerformed
         ArrayList<Pessoa> pp = new ArrayList<>();
         List<String> aux1 = addBols.getSelectedValuesList();
-        List<String> aux2 = SelecOrientadorLista.getSelectedValuesList();
+        List<String> aux2 = addInvest.getSelectedValuesList();
 
         Docente docente = null;
         for (int i=0;i<pessoas.size();i++){
-            if(pessoas.get(i).getNome().equals(SelecBolseiro.getSelectedItem())){
+            if(pessoas.get(i).getNome().equals(addInvPrinc.getSelectedItem())){
                 docente = (Docente) pessoas.get(i);
                 break;
             }
@@ -1327,6 +1327,15 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 }
             }
         }
+        for (int i =0;i<auxPessoas.length;i++){
+            for(int j =0;j<pessoas.size();j++){
+                if(pessoas.get(j).getNome().equals(addBols.getSelectedValuesList().get(i))){
+                    if(pessoas.get(j).getTipoBols().equals("L")){
+                        pessoas.get(j).setDocentes(auxPessoas[i]);
+                    }
+                }
+            }
+        }
         Projeto projeto = new Projeto(cpNome.getText(),cpAcronimo.getText(), new Data(Integer.parseInt(cpDiaIn.getText()),Integer.parseInt(cpMesIn.getText()),Integer.parseInt(cpAnoIn.getText())), Integer.parseInt(cpDuracaoprev.getText()), docente, pp);
         projetos.add(projeto);
         CriarProjeto3.setVisible(false);
@@ -1339,7 +1348,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
     private void VoltarCriarProjeto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCriarProjeto3ActionPerformed
         CriarProjeto3.setVisible(false);
-        CriarProjeto.setVisible(true);
+        CriarProjeto2.setVisible(true);
     }//GEN-LAST:event_VoltarCriarProjeto3ActionPerformed
 
     private void cpDiaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpDiaInActionPerformed
@@ -1383,11 +1392,41 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_addInvPrincActionPerformed
 
     private void SeguinteCriarProjeto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguinteCriarProjeto2ActionPerformed
-        // TODO add your handling code here:
+        if(addInvPrinc.getSelectedItem()!= null && !addInvest.getSelectedValuesList().isEmpty() && !addBols.getSelectedValuesList().isEmpty()){
+            int aux = 0;
+            List<String> d = addBols.getSelectedValuesList();
+            String dd[] = new String[d.size()];
+            
+            for(int j=0;j<d.size();j++){
+                dd[j] = d.get(j);
+            }
+            
+            SelecBolseiro.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
+            
+            String p = (String)addInvPrinc.getSelectedItem();
+            d = addInvest.getSelectedValuesList();
+            dd = new String[d.size()+1];
+            dd[0] = p;
+            for(int i=1;i<d.size()+1;i++){
+                if(!d.get(i-1).equals(p)){
+                    dd[i] = d.get(i-1);
+                }
+                
+            }
+            
+            SelecOrientadorLista.setListData(dd);
+            auxPessoas= new ArrayList[addBols.getSelectedValuesList().size()];
+
+            
+            CriarProjeto2.setVisible(false);
+            CriarProjeto3.setVisible(true);
+        }
+        
     }//GEN-LAST:event_SeguinteCriarProjeto2ActionPerformed
 
     private void VoltarCriarProjeto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarCriarProjeto2ActionPerformed
-        // TODO add your handling code here:
+        CriarProjeto2.setVisible(false);
+        CriarProjeto.setVisible(true);
     }//GEN-LAST:event_VoltarCriarProjeto2ActionPerformed
 
     private void AlteraTaxaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlteraTaxaActionPerformed
@@ -1417,6 +1456,28 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private void SeguinteCriarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguinteCriarTarefaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SeguinteCriarTarefaActionPerformed
+
+    private void ConfirmarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarOrientadorActionPerformed
+        
+        int aux;
+        if(!SelecOrientadorLista.getSelectedValuesList().isEmpty() && SelecBolseiro.getSelectedItem()!= null){
+            List <String> d = SelecOrientadorLista.getSelectedValuesList();
+            List <String> dd = addBols.getSelectedValuesList();
+            aux = dd.indexOf((String)SelecBolseiro.getSelectedItem());
+            for(int i=0;i<d.size();i++){
+                if(auxPessoas[aux] != null){
+                    if(!auxPessoas[aux].contains(d.get(i))){
+                        auxPessoas[aux].add(d.get(i));
+                    }
+                }else{
+                    auxPessoas[aux]= new ArrayList<>();
+                    auxPessoas[aux].add(d.get(i));
+                }
+            }
+        }
+        
+
+    }//GEN-LAST:event_ConfirmarOrientadorActionPerformed
 
     /**
      * @param args the command line arguments

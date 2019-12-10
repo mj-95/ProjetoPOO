@@ -13,6 +13,14 @@ import java.util.ArrayList;
  * @author maria
  */
 public class Mestrado extends Bolseiro implements Serializable{
+
+    public ArrayList<String> getDocentes() {
+        return docentes;
+    }
+
+    public void setDocentes(ArrayList<String> docentes) {
+        this.docentes = docentes;
+    }
     private ArrayList<String> docentes;
     
      public void insereDocente(String docente){
@@ -28,6 +36,10 @@ public class Mestrado extends Bolseiro implements Serializable{
     }
     public Mestrado(String nome, String email) {
         super(nome, email);
+    }
+    
+    public String getTipoBols(){
+        return "M";
     }
 
 }

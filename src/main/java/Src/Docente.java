@@ -6,6 +6,7 @@
 package Src;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,14 +15,17 @@ import java.io.Serializable;
 public class Docente extends Pessoa implements Serializable {
     protected int nMecanografico;
     protected String areaInvestigacao;
-    
+    public String getTipoBols(){
+        return null;
+    }
+
     public String getTipo(){
         return "Doc";
     }
     public int getnMecanografico() {
         return nMecanografico;
     }
-
+    public void setDocentes(ArrayList<String> docentes){};
     public void setnMecanografico(int nMecanografico) {
         this.nMecanografico = nMecanografico;
     }

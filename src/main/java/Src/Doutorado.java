@@ -6,19 +6,27 @@
 package Src;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author maria
  */
-public class Doutorado extends Bolseiro implements Serializable{
+public  class Doutorado extends Bolseiro implements Serializable{
     
     public Doutorado(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
         super(dataInicBolsa, dataFinBolsa, custoProjeto, nome, email);
     }
+    public String getTipoBols(){
+        return "Dou";
+    }
+    public void setDocentes(ArrayList<String> docentes){
+        
+    }
     public Doutorado(String nome, String email) {
         super(nome, email);
     }
+
     
     
 }

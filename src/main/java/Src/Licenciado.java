@@ -37,6 +37,9 @@ public class Licenciado extends Bolseiro implements Serializable{
     public void setDocentes(ArrayList<String> docentes) {
         this.docentes = docentes;
     }
+    public String getTipoBols(){
+        return "L";
+    }
 
     public Data getDataInicBolsa() {
         return dataInicBolsa;
