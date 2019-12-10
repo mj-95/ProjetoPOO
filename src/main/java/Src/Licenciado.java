@@ -16,11 +16,12 @@ public class Licenciado extends Bolseiro implements Serializable{
     private ArrayList<String> docentes;
 
     public Licenciado(ArrayList<String> docentes, Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
-        super(dataInicBolsa, dataFinBolsa, custoProjeto, nome, email);
+        super(dataInicBolsa, dataFinBolsa, nome, email);
         this.docentes = docentes;
     }
     public Licenciado(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
-        super(dataInicBolsa, dataFinBolsa, custoProjeto, nome, email);
+        super(dataInicBolsa, dataFinBolsa, nome, email);
+        docentes = new ArrayList<>();
     }
     public Licenciado(String nome, String email) {
         super(nome, email);

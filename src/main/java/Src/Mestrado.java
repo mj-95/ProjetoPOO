@@ -28,11 +28,12 @@ public class Mestrado extends Bolseiro implements Serializable{
     }
 
     public Mestrado(ArrayList<String> docentes, Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
-        super(dataInicBolsa, dataFinBolsa, custoProjeto, nome, email);
+        super(dataInicBolsa, dataFinBolsa, nome, email);
         this.docentes = docentes;
     }
     public Mestrado(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
-        super(dataInicBolsa, dataFinBolsa, custoProjeto, nome, email);
+        super(dataInicBolsa, dataFinBolsa, nome, email);
+        docentes = new ArrayList<>();
     }
     public Mestrado(String nome, String email) {
         super(nome, email);

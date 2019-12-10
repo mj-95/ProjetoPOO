@@ -17,11 +17,11 @@ public abstract class Bolseiro extends Pessoa implements Serializable{
     protected Data dataFinBolsa;
     protected int custoProjeto;
 
-    public Bolseiro(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
+    public Bolseiro(Data dataInicBolsa, Data dataFinBolsa, String nome, String email) {
         super(nome, email);
         this.dataInicBolsa = dataInicBolsa;
         this.dataFinBolsa = dataFinBolsa;
-        this.custoProjeto = custoProjeto;
+        this.custoProjeto = 0;
     }
     public Bolseiro(String nome, String email) {
         super(nome, email);

@@ -25,22 +25,112 @@ public class ProjetoPOO extends javax.swing.JFrame {
     protected ArrayList <Projeto> projetos;
     protected ArrayList <String> auxPessoas[];
     
-    public ProjetoPOO() throws IOException {
+    public ProjetoPOO() throws IOException, ClassNotFoundException {
         pessoas = new ArrayList<>();
         projetos = new ArrayList<>();
         lerPessoas(pessoas);
-        /*
+        
         try{
-            projetos = lerProjetosObj();
+            lerProjObj();
         }
         catch(NullPointerException | IOException e) {
             projetos = new ArrayList<>();
-        }*/
-        this.pessoas = pessoas;
-        this.projetos = projetos;
+        }
         initComponents();
     }
-
+    
+    public void lerProjObj() throws IOException, ClassNotFoundException{
+        FicheirosDeObjetos proj = new FicheirosDeObjetos();
+        proj.abreLeitura("Proj.ser");
+        projetos = (ArrayList<Projeto>) proj.leObjeto();
+        proj.fechaLeitura();
+    }
+    
+    public void escrevePessoas() throws IOException{
+        FicheiroDeTexto pes = new FicheiroDeTexto();
+        pes.abreEscrita("FichPessoas.txt");
+        String aux;
+        Licenciado lic;
+        Mestrado mes;
+        Doutorado dou;
+        Docente doc;
+        for(int i=0;i<pessoas.size();i++){
+            aux = "";
+            if(pessoas.get(i).getTipo().equals("B")){
+                if(pessoas.get(i).getTipoBols().equals("L")){
+                    lic = (Licenciado)pessoas.get(i);
+                    aux+= lic.getNome() + ";";
+                    aux+= lic.getEmail() + ";";
+                    aux+= "B" + "/";
+                    aux+= lic.getDataInicBolsa().getDia() + ":" + lic.getDataInicBolsa().getMes() + ":" + lic.getDataInicBolsa().getAno() + ";";
+                    aux+= lic.getDataFinBolsa().getDia() + ":" + lic.getDataFinBolsa().getMes() + ":" + lic.getDataFinBolsa().getAno() + ";";
+                    aux+= lic.getCustoProjeto() + ";";
+                    aux+= "L" + "/";
+                    if(lic.getDocentes().isEmpty()){
+                        aux+= " /";
+                    }
+                    else{
+                        for(int j=0;j<lic.getDocentes().size();j++){
+                            if(j==lic.getDocentes().size()-1){
+                                aux+= lic.getDocentes().get(j) +"/";
+                                break;
+                            }
+                            aux+= lic.getDocentes().get(j) +";";
+                        }
+                    }
+                }
+                else if(pessoas.get(i).getTipoBols().equals("M")){
+                    mes = (Mestrado)pessoas.get(i);
+                    aux+= mes.getNome() + ";";
+                    aux+= mes.getEmail() + ";";
+                    aux+= "B" + "/";
+                    aux+= mes.getDataInicBolsa().getDia() + ":" + mes.getDataInicBolsa().getMes() + ":" + mes.getDataInicBolsa().getAno() + ";";
+                    aux+= mes.getDataFinBolsa().getDia() + ":" + mes.getDataFinBolsa().getMes() + ":" + mes.getDataFinBolsa().getAno() + ";";
+                    aux+= mes.getCustoProjeto() + ";";
+                    aux+= "M" + "/";
+                    if(mes.getDocentes().isEmpty()){
+                        aux+= " /";
+                    }
+                    else{
+                        for(int j=0;j<mes.getDocentes().size();j++){
+                            if(j==mes.getDocentes().size()-1){
+                                aux+= mes.getDocentes().get(j) +"/";
+                                break;
+                            }
+                            aux+= mes.getDocentes().get(j) +";";
+                        }
+                    }
+                }
+                else if(pessoas.get(i).getTipoBols().equals("Dou")){
+                    dou = (Doutorado)pessoas.get(i);
+                    aux+= dou.getNome() + ";";
+                    aux+= dou.getEmail() + ";";
+                    aux+= "B" + "/";
+                    aux+= dou.getDataInicBolsa().getDia() + ":" + dou.getDataInicBolsa().getMes() + ":" + dou.getDataInicBolsa().getAno() + ";";
+                    aux+= dou.getDataFinBolsa().getDia() + ":" + dou.getDataFinBolsa().getMes() + ":" + dou.getDataFinBolsa().getAno() + ";";
+                    aux+= dou.getCustoProjeto() + ";";
+                    aux+= "D" + "/";
+                }
+            }
+            else if(pessoas.get(i).getTipo().equals("Doc")){
+                doc = (Docente)pessoas.get(i);
+                aux+= doc.getNome() + ";";
+                aux+= doc.getEmail() + ";";
+                aux+= "D" + "/";
+                aux+= doc.getnMecanografico()+";";
+                aux+= doc.getAreaInvestigacao() +"/";
+                }
+            pes.escreveLinha(aux);
+        }
+        pes.fechaEscrita();
+    }
+    public void save() throws IOException {
+        FicheirosDeObjetos proj = new FicheirosDeObjetos();
+        proj.abreEscrita("Proj.ser");
+        proj.escreveObjeto(projetos);
+        escrevePessoas();
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1543,57 +1633,40 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
             else if (partPessoa[2].equals("B")) {
                 String partBolseiro[] = parts[1].split(";");
-                if(partBolseiro[0].equals(" ")){
-                    if(partBolseiro[3].equals("D")){
-                        Doutorado doutorado = new Doutorado(partPessoa[0], partPessoa[1]);
-                        pessoas.add(doutorado);
+                String partDataIni[] = partBolseiro[0].split(":");
+                String partDataFim[] = partBolseiro[1].split(":");
+                Data dataIni = new Data(Integer.parseInt(partDataIni[0]),Integer.parseInt(partDataIni[1]),Integer.parseInt(partDataIni[2]));
+                Data dataFim = new Data(Integer.parseInt(partDataFim[0]),Integer.parseInt(partDataFim[1]),Integer.parseInt(partDataFim[2]));
+                if(partBolseiro[3].equals("D")){
+                    Doutorado doutorado = new Doutorado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
+                    pessoas.add(doutorado);
+                }
+                else if(parts[2].equals(" ")){
+                    if(partBolseiro[3].equals("L")){
+                        Licenciado licenciado = new Licenciado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
+                        pessoas.add(licenciado);
                     }
-                    else if(parts[2].equals(" ")){
-                        if(partBolseiro[3].equals("L")){
-                            Licenciado licenciado = new Licenciado(partPessoa[0], partPessoa[1]);
-                            pessoas.add(licenciado);
-                        }
-                        else if(partBolseiro[3].equals("M")){
-                            Mestrado mestrado = new Mestrado(partPessoa[0], partPessoa[1]);
-                            pessoas.add(mestrado);
-                        }
+                    else if(partBolseiro[3].equals("M")){
+                        Mestrado mestrado = new Mestrado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
+                        pessoas.add(mestrado);
                     }
                 }
                 else{
-                    String partDataIni[] = partBolseiro[0].split(":");
-                    String partDataFim[] = partBolseiro[1].split(":");
-                    Data dataIni = new Data(Integer.parseInt(partDataIni[0]),Integer.parseInt(partDataIni[1]),Integer.parseInt(partDataIni[2]));
-                    Data dataFim = new Data(Integer.parseInt(partDataFim[0]),Integer.parseInt(partDataFim[1]),Integer.parseInt(partDataFim[2]));
-                    if(partBolseiro[3].equals("D")){
-                        Doutorado doutorado = new Doutorado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
-                        pessoas.add(doutorado);
+                    String partOrientador[] = parts[2].split(";");
+                    ArrayList<String> orientadores = new ArrayList<>();
+                    for(int i=0; i<partOrientador.length;i++){
+                        orientadores.add(partOrientador[i]);
                     }
-                    else if(parts[2].equals(" ")){
-                        if(partBolseiro[3].equals("L")){
-                            Licenciado licenciado = new Licenciado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
-                            pessoas.add(licenciado);
-                        }
-                        else if(partBolseiro[3].equals("M")){
-                            Mestrado mestrado = new Mestrado(dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
-                            pessoas.add(mestrado);
-                        }
+                    if(partBolseiro[3].equals("L")){
+                        Licenciado licenciado = new Licenciado(orientadores, dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
+                        pessoas.add(licenciado);
                     }
-                    else{
-                        String partOrientador[] = parts[2].split(";");
-                        ArrayList<String> orientadores = new ArrayList<>();
-                        for(int i=0; i<partOrientador.length;i++){
-                            orientadores.add(partOrientador[i]);
-                        }
-                        if(partBolseiro[3].equals("L")){
-                            Licenciado licenciado = new Licenciado(orientadores, dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
-                            pessoas.add(licenciado);
-                        }
-                        else if(partBolseiro[3].equals("M")){
-                            Mestrado mestrado = new Mestrado(orientadores, dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
-                            pessoas.add(mestrado);
-                        }
+                    else if(partBolseiro[3].equals("M")){
+                        Mestrado mestrado = new Mestrado(orientadores, dataIni, dataFim,Integer.parseInt(partBolseiro[2]) , partPessoa[0], partPessoa[1]);
+                        pessoas.add(mestrado);
                     }
                 }
+                
             }
             
             linhafich = fichPessoas.leLinha();
@@ -1608,6 +1681,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 try {
                     new ProjetoPOO().setVisible(true);
                 } catch (IOException ex) {
+                    Logger.getLogger(ProjetoPOO.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ProjetoPOO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
