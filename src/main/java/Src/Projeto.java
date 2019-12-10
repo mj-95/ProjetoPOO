@@ -5,13 +5,14 @@
  */
 package Src;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author maria
  */
-public class Projeto {
+public class Projeto implements Serializable {
     private String nome;
     private String acronimo;
     private Data dataInic;
@@ -19,19 +20,31 @@ public class Projeto {
     private int duracaoEstimada;
     private Data dataFim;
     private Docente invPrinc;
-    private ArrayList<Pessoa> Pessoas;
-    private ArrayList<Tarefa> Tarefas;
+    private ArrayList<Pessoa> pessoas;
+    private ArrayList<Tarefa> tarefas;
 
-    public Projeto(String nome, String acronimo, Data dataInic, int duracaoEstimada, Docente invPrinc, ArrayList<Pessoa> Pessoas) {
+    public Projeto(String nome, String acronimo, Data dataInic, int duracaoEstimada, Docente invPrinc, ArrayList<Pessoa> pessoas) {
         this.nome = nome;
         this.acronimo = acronimo;
         this.dataInic = dataInic;
         this.duracaoEstimada = duracaoEstimada;
         this.invPrinc = invPrinc;
-        this.Pessoas = Pessoas;
+        this.pessoas = pessoas;
         this.estado = false;
+        this.tarefas = new ArrayList();
     }
-
+    
+    public int custo(){
+        int c  = 0;
+        for(int i =0;i<pessoas.size();i++){
+            if(pessoas.get(i).getTipo().equals("B")){
+                c+= pessoas.get(i).getCusto()*duracaoEstimada;
+            }
+            
+        }
+        return c;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -81,19 +94,20 @@ public class Projeto {
     }
 
     public ArrayList<Pessoa> getPessoas() {
-        return Pessoas;
+        return pessoas;
     }
 
-    public void setPessoas(ArrayList<Pessoa> Pessoas) {
-        this.Pessoas = Pessoas;
+    public void setPessoas(ArrayList<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 
     public ArrayList<Tarefa> getTarefas() {
-        return Tarefas;
+        return tarefas;
     }
 
-    public void setTarefas(ArrayList<Tarefa> Tarefas) {
-        this.Tarefas = Tarefas;
+    public void setTarefas(ArrayList<Tarefa> tarefas) {
+        this.tarefas = tarefas;
     }
+
     
 }

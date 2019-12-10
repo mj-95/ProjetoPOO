@@ -5,24 +5,34 @@
  */
 package Src;
 
+import java.io.Serializable;
+
 /**
  *
  * @author maria
  */
-public class Tarefa {
+public class Tarefa implements Serializable{
+    protected String nome;
     protected Data dataInic;
     protected int duracaoEstimada;
     protected int taxaExecucao;
     protected Data dataFim;
     protected Pessoa pessoa;
 
-    public Tarefa(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa) {
+    public Tarefa(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa,String nome) {
         this.dataInic = dataInic;
         this.duracaoEstimada = duracaoEstimada;
         this.taxaExecucao = taxaExecucao;
         this.pessoa = pessoa;
+        this.nome = nome;
+    }
+    public String getNome() {
+        return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     public Data getDataInic() {
         return dataInic;
     }

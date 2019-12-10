@@ -12,11 +12,16 @@ import java.util.ArrayList;
  *
  * @author maria
  */
-public  class Doutorado extends Bolseiro implements Serializable{
+public class Doutorado extends Bolseiro implements Serializable{
     
     public Doutorado(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
         super(dataInicBolsa, dataFinBolsa, nome, email);
     }
+    
+    public int getCusto(){
+        return 1200;
+    }
+    
     public String getTipoBols(){
         return "Dou";
     }

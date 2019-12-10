@@ -82,4 +82,8 @@ public class Licenciado extends Bolseiro implements Serializable{
         this.email = email;
     }
     
+    public int getCusto(){
+        return 800;
+    }
+    
 }

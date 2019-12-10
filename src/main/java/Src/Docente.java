@@ -29,6 +29,10 @@ public class Docente extends Pessoa implements Serializable {
     public void setnMecanografico(int nMecanografico) {
         this.nMecanografico = nMecanografico;
     }
+    
+    public int getCusto(){
+        return 0;
+    }
 
     public String getAreaInvestigacao() {
         return areaInvestigacao;

@@ -128,6 +128,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
         FicheirosDeObjetos proj = new FicheirosDeObjetos();
         proj.abreEscrita("Proj.ser");
         proj.escreveObjeto(projetos);
+        proj.fechaEscrita();
         escrevePessoas();
         
     }
@@ -167,18 +168,17 @@ public class ProjetoPOO extends javax.swing.JFrame {
         ConfirmarRespTarefa = new javax.swing.JButton();
         MenuProjNaoConc = new javax.swing.JPanel();
         TituloProj = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        FimProjBotao = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        AreaCusto = new javax.swing.JLabel();
+        VoltarFimProj = new javax.swing.JButton();
+        NovaTarefaBotao = new javax.swing.JButton();
+        EliminarTarefaBotao = new javax.swing.JButton();
+        AlterarTarefaBotao = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton8 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
+        ListaTarefas = new javax.swing.JList<>();
+        EscolherEstadoTarefa = new javax.swing.JComboBox<>();
+        OkEscolherEstadoTarefa = new javax.swing.JButton();
         MenuProjConc = new javax.swing.JPanel();
         TituloProj2 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -512,58 +512,56 @@ public class ProjetoPOO extends javax.swing.JFrame {
         TituloProj.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         TituloProj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jButton3.setText("Terminar Projeto");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        FimProjBotao.setText("Terminar Projeto");
+        FimProjBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                FimProjBotaoActionPerformed(evt);
             }
         });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setText("Custo total do Projeto:");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        AreaCusto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton11.setText("Voltar");
-
-        jButton5.setText("Nova Tarefa");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        VoltarFimProj.setText("Voltar");
+        VoltarFimProj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                VoltarFimProjActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Eliminar Tarefa");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        NovaTarefaBotao.setText("Nova Tarefa");
+        NovaTarefaBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                NovaTarefaBotaoActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Alterar Tarefa");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        EliminarTarefaBotao.setText("Eliminar Tarefa");
+        EliminarTarefaBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                EliminarTarefaBotaoActionPerformed(evt);
             }
         });
 
-        jScrollPane6.setViewportView(jList1);
-
-        jButton8.setText("Tarefas Concluídas");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        AlterarTarefaBotao.setText("Alterar Tarefa");
+        AlterarTarefaBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                AlterarTarefaBotaoActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Tarefas por inicializar", "Tarefas não Concluídas na data Estimada", "Tarefas Concluídas" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane6.setViewportView(ListaTarefas);
+
+        EscolherEstadoTarefa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Tarefas por inicializar", "Tarefas não Concluídas na data Estimada", "Tarefas Concluídas" }));
+        EscolherEstadoTarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                EscolherEstadoTarefaActionPerformed(evt);
             }
         });
 
-        jButton9.setText("OK");
+        OkEscolherEstadoTarefa.setText("OK");
 
         javax.swing.GroupLayout MenuProjNaoConcLayout = new javax.swing.GroupLayout(MenuProjNaoConc);
         MenuProjNaoConc.setLayout(MenuProjNaoConcLayout);
@@ -574,30 +572,30 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TituloProj, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                     .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
-                        .addComponent(jButton11)
+                        .addComponent(VoltarFimProj)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(FimProjBotao)))
                 .addContainerGap())
             .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                        .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AreaCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(NovaTarefaBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EliminarTarefaBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AlterarTarefaBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
                         .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EscolherEstadoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton9))
+                                .addComponent(OkEscolherEstadoTarefa))
                             .addComponent(jScrollPane6))
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(120, 120, 120))
         );
         MenuProjNaoConcLayout.setVerticalGroup(
@@ -607,27 +605,26 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addComponent(TituloProj, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9))
+                    .addComponent(EscolherEstadoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OkEscolherEstadoTarefa))
                 .addGap(27, 27, 27)
                 .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuProjNaoConcLayout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(NovaTarefaBotao)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7)
+                        .addComponent(AlterarTarefaBotao)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)
+                        .addComponent(EliminarTarefaBotao)
                         .addGap(0, 119, Short.MAX_VALUE))
                     .addComponent(jScrollPane6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AreaCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(MenuProjNaoConcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11)
-                    .addComponent(jButton3))
+                    .addComponent(VoltarFimProj)
+                    .addComponent(FimProjBotao))
                 .addContainerGap())
         );
 
@@ -1372,16 +1369,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 }
             }
             addInvest.setListData(dd);
-            
-            aux2 = 0;
-            dd = new String[pessoas.size()];
-            
-            for(int j=0;j<pessoas.size();j++){
-                if (pessoas.get(j).getTipo().equals("Doc")){
-                    dd[aux2] = (pessoas.get(j).getNome());
-                    aux2++;
-                }
-            }
             addInvPrinc.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
             
             aux2 = 0;
@@ -1391,7 +1378,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 if (pessoas.get(j).getTipo().equals("B")){
                     
                     Bolseiro bolseiro= (Bolseiro) pessoas.get(j);
-                    if(bolseiro.getDataInicBolsa()== null){
+                    if(bolseiro.getCustoProjeto()==0){
                         dd[aux2] = (pessoas.get(j).getNome());
                         aux2++;
                         
@@ -1455,6 +1442,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
             Projeto projeto = new Projeto(cpNome.getText(),cpAcronimo.getText(), new Data(Integer.parseInt(cpDiaIn.getText()),Integer.parseInt(cpMesIn.getText()),Integer.parseInt(cpAnoIn.getText())), Integer.parseInt(cpDuracaoprev.getText()), docente, pp);
             projetos.add(projeto);
+            try {
+                save();
+            } catch (IOException ex) {
+                Logger.getLogger(ProjetoPOO.class.getName()).log(Level.SEVERE, null, ex);
+            }
             CriarProjeto3.setVisible(false);
             MenuPrincipal.setVisible(true);
             
@@ -1475,33 +1467,29 @@ public class ProjetoPOO extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpDiaInActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void FimProjBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FimProjBotaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_FimProjBotaoActionPerformed
 
     private void ProcurarProjetoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcurarProjetoNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProcurarProjetoNomeActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void NovaTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaTarefaBotaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_NovaTarefaBotaoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void EliminarTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTarefaBotaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_EliminarTarefaBotaoActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void AlterarTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarTarefaBotaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_AlterarTarefaBotaoActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void EscolherEstadoTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EscolherEstadoTarefaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_EscolherEstadoTarefaActionPerformed
 
     private void SubAlterarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubAlterarTarefaActionPerformed
         // TODO add your handling code here:
@@ -1601,18 +1589,32 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
     private void SeguinteProcurarProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguinteProcurarProjActionPerformed
         String aux[] = ((String)ProcurarProjetoNome.getSelectedItem()).split(" - ");
+        String tarefa[];
         for(int i=0;i<projetos.size();i++){
             if(projetos.get(i).getNome().equals(aux[0])){
+                projetoSelec = projetos.get(i);
                 if(projetos.get(i).isEstado()){
                     ProcurarProjeto.setVisible(false);
                     MenuProjConc.setVisible(true);
                 }else{
+                    TituloProj.setText(projetos.get(i).getNome());
+                    tarefa = new String[projetos.get(i).getTarefas().size()];
+                    for(int j = 0;j<projetos.get(i).getTarefas().size();j++){
+                        tarefa[j] = projetos.get(i).getTarefas().get(j).getNome();
+                    }
+                    ListaTarefas.setListData(tarefa);
+                    AreaCusto.setText(Integer.toString(projetoSelec.custo()));
                     ProcurarProjeto.setVisible(false);
                     MenuProjNaoConc.setVisible(true);
                 }
             }
         }
     }//GEN-LAST:event_SeguinteProcurarProjActionPerformed
+
+    private void VoltarFimProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarFimProjActionPerformed
+        MenuProjNaoConc.setVisible(false);
+        MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarFimProjActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1692,6 +1694,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AlteraTaxa;
     private javax.swing.JPanel AlterarTarefa;
+    private javax.swing.JButton AlterarTarefaBotao;
+    private javax.swing.JLabel AreaCusto;
     private javax.swing.JButton ConfirmarOrientador;
     private javax.swing.JButton ConfirmarRespTarefa;
     private javax.swing.JButton CriarProj;
@@ -1699,8 +1703,12 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JPanel CriarProjeto2;
     private javax.swing.JPanel CriarProjeto3;
     private javax.swing.JPanel CriarTarefa;
+    private javax.swing.JButton EliminarTarefaBotao;
+    private javax.swing.JComboBox<String> EscolherEstadoTarefa;
+    private javax.swing.JButton FimProjBotao;
     private javax.swing.JButton FinalizarCriarProjeto;
     private javax.swing.JTextArea InformacaoProj;
+    private javax.swing.JList<String> ListaTarefas;
     private javax.swing.JPanel ListarProjConc;
     private javax.swing.JPanel ListarProjNaoConc;
     private javax.swing.JPanel MenuPrincipal;
@@ -1709,6 +1717,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JTextArea NomeListaConc;
     private javax.swing.JTextArea NomeListaNaoConc;
     private javax.swing.JTextField NomeTarefa;
+    private javax.swing.JButton NovaTarefaBotao;
+    private javax.swing.JButton OkEscolherEstadoTarefa;
     private javax.swing.JButton ProcurarProj;
     private javax.swing.JPanel ProcurarProjeto;
     private javax.swing.JComboBox<String> ProcurarProjetoNome;
@@ -1736,6 +1746,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JButton VoltarCriarProjeto2;
     private javax.swing.JButton VoltarCriarProjeto3;
     private javax.swing.JButton VoltarCriarTarefa;
+    private javax.swing.JButton VoltarFimProj;
     private javax.swing.JButton VoltarListaConc;
     private javax.swing.JButton VoltarListaNaoConc;
     private javax.swing.JButton VoltarProcurarProj;
@@ -1754,21 +1765,12 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JTextField ctDuracaoprev;
     private javax.swing.JTextField ctMes;
     private javax.swing.JScrollPane invest;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1793,7 +1795,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

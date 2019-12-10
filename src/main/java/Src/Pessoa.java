@@ -35,6 +35,8 @@ public abstract class Pessoa implements Serializable{
     }
     public abstract void setDocentes(ArrayList<String> docentes);
     
+    public abstract int getCusto();
+    
     public abstract String getTipoBols();
 
     public abstract String getTipo();

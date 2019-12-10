@@ -39,6 +39,10 @@ public class Mestrado extends Bolseiro implements Serializable{
         super(nome, email);
     }
     
+    public int getCusto(){
+        return 1000;
+    }
+    
     public String getTipoBols(){
         return "M";
     }

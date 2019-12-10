@@ -5,14 +5,16 @@
  */
 package Src;
 
+import java.io.Serializable;
+
 /**
  *
  * @author maria
  */
-public class Desenvolvimento extends Tarefa {
+public class Desenvolvimento extends Tarefa implements Serializable{
 
-    public Desenvolvimento(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa) {
-        super(dataInic, duracaoEstimada, taxaExecucao, pessoa);
+    public Desenvolvimento(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa, String nome) {
+        super(dataInic, duracaoEstimada, taxaExecucao, pessoa, nome);
     }
     
 }
