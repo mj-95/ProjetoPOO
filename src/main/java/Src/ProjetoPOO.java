@@ -227,7 +227,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
         ctAno = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        TipoTarefaCriar = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
         CriarProjeto2 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -352,6 +352,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         });
 
         VoltarProcurarProj.setText("Voltar");
+        VoltarProcurarProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarProcurarProjActionPerformed(evt);
+            }
+        });
 
         SeguinteProcurarProj.setText("Seguinte");
         SeguinteProcurarProj.addActionListener(new java.awt.event.ActionListener() {
@@ -552,6 +557,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
         });
 
+        ListaTarefas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane6.setViewportView(ListaTarefas);
 
         EscolherEstadoTarefa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Tarefas por inicializar", "Tarefas não Concluídas na data Estimada", "Tarefas Concluídas" }));
@@ -958,7 +964,12 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
         jLabel32.setText("/");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desenvolvimento", "Design", "Documentação" }));
+        TipoTarefaCriar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desenvolvimento", "Design", "Documentação" }));
+        TipoTarefaCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoTarefaCriarActionPerformed(evt);
+            }
+        });
 
         jLabel36.setText("dias");
 
@@ -984,7 +995,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                             .addGroup(CriarTarefaLayout.createSequentialGroup()
                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(TipoTarefaCriar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(CriarTarefaLayout.createSequentialGroup()
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1030,7 +1041,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(CriarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TipoTarefaCriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(CriarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
@@ -1486,7 +1497,14 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarTarefaBotaoActionPerformed
 
     private void AlterarTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarTarefaBotaoActionPerformed
-        // TODO add your handling code here:
+        String t = ListaTarefas.getSelectedValue();
+        for(int k =0;k<projetoSelec.getTarefas().size();k++ ){
+            if(projetoSelec.getTarefas().get(k).getNome().equals(t)){
+                
+            }
+        }
+        MenuProjNaoConc.setVisible(false);
+        AlterarTarefa.setVisible(true);
     }//GEN-LAST:event_AlterarTarefaBotaoActionPerformed
 
     private void EscolherEstadoTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EscolherEstadoTarefaActionPerformed
@@ -1575,7 +1593,78 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarCriarTarefaActionPerformed
 
     private void SeguinteCriarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguinteCriarTarefaActionPerformed
-        // TODO add your handling code here:
+        NomeTarefa.setBackground(null);
+        ctDia.setBackground(null);
+        ctMes.setBackground(null);
+        ctAno.setBackground(null);
+        ctDuracaoprev.setBackground(null);
+        int aux=0;
+        if (NomeTarefa.getText().equals("")){
+            cpNome.setBackground(Color.red);
+            aux++;
+        }
+        else{
+            for (int i = 0; i < projetoSelec.getTarefas().size();i++){
+                if (projetoSelec.getTarefas().get(i).getNome().equals(NomeTarefa.getText())){
+                    NomeTarefa.setBackground(Color.red);
+                    JOptionPane.showInputDialog("Nome já existente!");
+                    NomeTarefa.setBackground(null);
+                    aux++;
+                    break;
+                }
+            }
+        }
+        
+        
+        try{
+        if (ctDia.getText().equals("") || Integer.parseInt(ctDia.getText())>31 || Integer.parseInt(ctDia.getText())<1){
+            ctDia.setBackground(Color.red);
+            aux++;
+        }}
+        catch (Exception e){
+            ctDia.setBackground(Color.red);
+            aux++;
+        }
+        try{
+        if (ctMes.getText().equals("") || Integer.parseInt(ctMes.getText())>12 || Integer.parseInt(ctMes.getText())<1){
+            ctMes.setBackground(Color.red);
+            aux++;
+        }}
+        catch (Exception e){
+            ctMes.setBackground(Color.red);
+            aux++;
+        }
+        try{
+        if (ctAno.getText().equals("") || Integer.parseInt(ctAno.getText())<0){
+            ctAno.setBackground(Color.red);
+            aux++;
+        }}
+        catch (Exception e){
+            ctAno.setBackground(Color.red);
+            aux++;
+        }
+        
+       
+        
+        try{
+        if (ctDuracaoprev.getText(). equals("") || Integer.parseInt(ctDuracaoprev.getText())<1){
+            ctDuracaoprev.setBackground(Color.red);
+            aux++;
+        }}
+        catch (Exception e){
+            ctDuracaoprev.setBackground(Color.red);
+            aux++;
+        }
+        if (aux > 0){
+            JOptionPane.showInputDialog("Por favor verifique os campos a vermelho.");
+        }
+        else{
+            Data data = new Data(Integer.parseInt(ctDia.getText()),Integer.parseInt(ctMes.getText()),Integer.parseInt(ctAno.getText()));
+            projetos.get(projetos.indexOf(projetoSelec)).setTarefa(new Tarefa(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
+            projetoSelec.setTarefa(new Tarefa(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
+            
+            
+        }
     }//GEN-LAST:event_SeguinteCriarTarefaActionPerformed
 
     private void ConfirmarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarOrientadorActionPerformed
@@ -1634,6 +1723,15 @@ public class ProjetoPOO extends javax.swing.JFrame {
         MenuProjNaoConc.setVisible(false);
         MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_VoltarFimProjActionPerformed
+
+    private void VoltarProcurarProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarProcurarProjActionPerformed
+        ProcurarProjeto.setVisible(false);
+        MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarProcurarProjActionPerformed
+
+    private void TipoTarefaCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoTarefaCriarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TipoTarefaCriarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1753,6 +1851,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JScrollPane SelecOrientador;
     public javax.swing.JList<String> SelecOrientadorLista;
     private javax.swing.JButton SubAlterarTarefa;
+    private javax.swing.JComboBox<String> TipoTarefaCriar;
     private javax.swing.JLabel TituloListaConc;
     private javax.swing.JLabel TituloListaNaoConc;
     private javax.swing.JLabel TituloProj;
@@ -1784,7 +1883,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JTextField ctDuracaoprev;
     private javax.swing.JTextField ctMes;
     private javax.swing.JScrollPane invest;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 public class Documentacao extends Tarefa implements Serializable{
 
-    public Documentacao(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa, String nome) {
-        super(dataInic, duracaoEstimada, taxaExecucao, pessoa, nome);
+    public Documentacao(Data dataInic, int duracaoEstimada, String nome) {
+        super(dataInic, duracaoEstimada, nome);
     }
     
 }

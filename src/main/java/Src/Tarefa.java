@@ -19,11 +19,10 @@ public class Tarefa implements Serializable{
     protected Data dataFim;
     protected Pessoa pessoa;
 
-    public Tarefa(Data dataInic, int duracaoEstimada, int taxaExecucao, Pessoa pessoa,String nome) {
+    public Tarefa(Data dataInic, int duracaoEstimada,String nome) {
         this.dataInic = dataInic;
         this.duracaoEstimada = duracaoEstimada;
-        this.taxaExecucao = taxaExecucao;
-        this.pessoa = pessoa;
+        this.taxaExecucao = 0;
         this.nome = nome;
     }
     public String getNome() {

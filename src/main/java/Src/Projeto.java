@@ -104,6 +104,10 @@ public class Projeto implements Serializable {
     public ArrayList<Tarefa> getTarefas() {
         return tarefas;
     }
+    
+    public void setTarefa(Tarefa t){
+        this.tarefas.add(t);
+    }
 
     public void setTarefas(ArrayList<Tarefa> tarefas) {
         this.tarefas = tarefas;
