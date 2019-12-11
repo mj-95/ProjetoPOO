@@ -309,12 +309,13 @@ public class ProjetoPOO extends javax.swing.JFrame {
                         .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPrincipalLayout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
-                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ProjConc, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProjNaoConc, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CriarProj, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProcurarProj, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 218, Short.MAX_VALUE)
+                .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(CriarProj, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addGroup(MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(ProcurarProj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ProjNaoConc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                        .addComponent(ProjConc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(258, 258, 258))
         );
         MenuPrincipalLayout.setVerticalGroup(
@@ -322,15 +323,15 @@ public class ProjetoPOO extends javax.swing.JFrame {
             .addGroup(MenuPrincipalLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(Título, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(80, 80, 80)
                 .addComponent(CriarProj)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(ProcurarProj)
-                .addGap(36, 36, 36)
+                .addGap(26, 26, 26)
                 .addComponent(ProjNaoConc)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(ProjConc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
                 .addComponent(Sair)
                 .addContainerGap())
         );
@@ -352,6 +353,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         });
 
         VoltarProcurarProj.setText("Voltar");
+        VoltarProcurarProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarProcurarProjActionPerformed(evt);
+            }
+        });
 
         SeguinteProcurarProj.setText("Seguinte");
         SeguinteProcurarProj.addActionListener(new java.awt.event.ActionListener() {
@@ -641,6 +647,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         VoltarProjConc.setText("Voltar");
+        VoltarProjConc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarProjConcActionPerformed(evt);
+            }
+        });
 
         InformacaoProj.setColumns(20);
         InformacaoProj.setRows(5);
@@ -695,6 +706,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         TituloListaNaoConc.setText("Projetos Não Concluídos na Data Estimada");
 
         VoltarListaNaoConc.setText("Voltar");
+        VoltarListaNaoConc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarListaNaoConcActionPerformed(evt);
+            }
+        });
 
         NomeListaNaoConc.setColumns(20);
         NomeListaNaoConc.setRows(5);
@@ -741,6 +757,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         TituloListaConc.setText("Projetos Concluídos");
 
         VoltarListaConc.setText("Voltar");
+        VoltarListaConc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarListaConcActionPerformed(evt);
+            }
+        });
 
         NomeListaConc.setColumns(20);
         NomeListaConc.setRows(5);
@@ -866,8 +887,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(CriarProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(CriarProjetoLayout.createSequentialGroup()
+                        .addGroup(CriarProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CriarProjetoLayout.createSequentialGroup()
                                 .addComponent(cpDiaIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -875,9 +896,9 @@ public class ProjetoPOO extends javax.swing.JFrame {
                                 .addComponent(cpMesIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpAnoIn))
-                            .addComponent(cpDuracaoprev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cpAnoIn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cpDuracaoprev, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CriarProjetoLayout.setVerticalGroup(
@@ -1356,7 +1377,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
             aux++;
         }
         if (aux > 0){
-            JOptionPane.showInputDialog("Por favor verifique os campos a vermelho.");
+            JOptionPane.showMessageDialog(null,"Por favor verifique os campos a vermelho.");
         }
         else{
             int aux2 = 0;
@@ -1634,6 +1655,26 @@ public class ProjetoPOO extends javax.swing.JFrame {
         MenuProjNaoConc.setVisible(false);
         MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_VoltarFimProjActionPerformed
+
+    private void VoltarProcurarProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarProcurarProjActionPerformed
+        ProcurarProjeto.setVisible(false);
+        MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarProcurarProjActionPerformed
+
+    private void VoltarProjConcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarProjConcActionPerformed
+        MenuProjConc.setVisible(false);
+        MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarProjConcActionPerformed
+
+    private void VoltarListaConcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarListaConcActionPerformed
+        MenuProjConc.setVisible(false);
+        MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarListaConcActionPerformed
+
+    private void VoltarListaNaoConcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarListaNaoConcActionPerformed
+       MenuProjNaoConc.setVisible(false);
+       MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_VoltarListaNaoConcActionPerformed
 
     /**
      * @param args the command line arguments
