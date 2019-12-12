@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author maria
  */
-public class Tarefa implements Serializable{
+public abstract class Tarefa implements Serializable{
     protected String nome;
     protected Data dataInic;
     protected int duracaoEstimada;
@@ -71,4 +71,9 @@ public class Tarefa implements Serializable{
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
+    
+    public abstract String getTipo();
+    
+    public abstract double getEsforco();
+
 }

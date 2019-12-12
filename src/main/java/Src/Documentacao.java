@@ -16,5 +16,11 @@ public class Documentacao extends Tarefa implements Serializable{
     public Documentacao(Data dataInic, int duracaoEstimada, String nome) {
         super(dataInic, duracaoEstimada, nome);
     }
+    public String getTipo(){
+        return "Documentacao";
+    }
     
+    public double getEsforco(){
+        return 0.25;
+    }
 }

@@ -271,21 +271,27 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="ResponsavelTarefa" min="-2" pref="163" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ConfirmarRespTarefa" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel22" min="-2" pref="154" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jLabel11" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel20" min="-2" pref="154" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="AlteraTaxa" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="ProgressoTarefa" min="-2" pref="503" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel20" min="-2" pref="154" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel22" min="-2" pref="154" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="AlteraTaxa" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="ResponsavelTarefaAtual" min="-2" pref="101" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jProgressBar1" min="-2" pref="503" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="ResponsavelTarefa" min="-2" pref="181" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -297,14 +303,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="TituloTarefa" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jProgressBar1" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="ProgressoTarefa" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                       <Component id="AlteraTaxa" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                      <Component id="ResponsavelTarefaAtual" min="-2" pref="27" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -317,10 +326,7 @@
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ResponsavelTarefa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ConfirmarRespTarefa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="ResponsavelTarefa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="123" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -356,7 +362,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubAlterarTarefaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+        <Component class="javax.swing.JProgressBar" name="ProgressoTarefa">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="0" red="99" type="rgb"/>
@@ -393,13 +399,7 @@
             <Property name="text" type="java.lang.String" value="Alterar Respons&#xe1;vel:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="ConfirmarRespTarefa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="OK"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmarRespTarefaActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JLabel" name="ResponsavelTarefaAtual">
         </Component>
       </SubComponents>
     </Container>

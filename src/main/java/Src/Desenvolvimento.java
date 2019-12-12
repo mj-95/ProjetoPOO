@@ -17,4 +17,11 @@ public class Desenvolvimento extends Tarefa implements Serializable{
         super(dataInic, duracaoEstimada, nome);
     }
     
+    public String getTipo(){
+        return "Desenvolvimento";
+    }
+    
+    public double getEsforco(){
+        return 1;
+    }
 }

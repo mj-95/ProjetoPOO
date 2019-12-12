@@ -17,4 +17,11 @@ public class Design extends Tarefa implements Serializable{
         super(dataInic, duracaoEstimada,nome);
     }
     
+    public String getTipo(){
+        return "Design";
+    }
+    
+    public double getEsforco(){
+        return 0.5;
+    }
 }

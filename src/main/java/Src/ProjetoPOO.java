@@ -160,12 +160,12 @@ public class ProjetoPOO extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         VoltarAlterarTarefa = new javax.swing.JButton();
         SubAlterarTarefa = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        ProgressoTarefa = new javax.swing.JProgressBar();
         jLabel22 = new javax.swing.JLabel();
         AlteraTaxa = new javax.swing.JTextField();
         ResponsavelTarefa = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        ConfirmarRespTarefa = new javax.swing.JButton();
+        ResponsavelTarefaAtual = new javax.swing.JLabel();
         MenuProjNaoConc = new javax.swing.JPanel();
         TituloProj = new javax.swing.JLabel();
         FimProjBotao = new javax.swing.JButton();
@@ -423,9 +423,9 @@ public class ProjetoPOO extends javax.swing.JFrame {
             }
         });
 
-        jProgressBar1.setForeground(new java.awt.Color(153, 0, 204));
-        jProgressBar1.setToolTipText("");
-        jProgressBar1.setName(""); // NOI18N
+        ProgressoTarefa.setForeground(new java.awt.Color(153, 0, 204));
+        ProgressoTarefa.setToolTipText("");
+        ProgressoTarefa.setName(""); // NOI18N
 
         jLabel22.setText("Responsável pela Tarefa:");
 
@@ -443,13 +443,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
 
         jLabel11.setText("Alterar Responsável:");
 
-        ConfirmarRespTarefa.setText("OK");
-        ConfirmarRespTarefa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmarRespTarefaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout AlterarTarefaLayout = new javax.swing.GroupLayout(AlterarTarefa);
         AlterarTarefa.setLayout(AlterarTarefaLayout);
         AlterarTarefaLayout.setHorizontalGroup(
@@ -466,18 +459,21 @@ public class ProjetoPOO extends javax.swing.JFrame {
             .addGroup(AlterarTarefaLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AlterarTarefaLayout.createSequentialGroup()
-                        .addComponent(ResponsavelTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ConfirmarRespTarefa))
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ProgressoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(AlterarTarefaLayout.createSequentialGroup()
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AlteraTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(AlterarTarefaLayout.createSequentialGroup()
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlterarTarefaLayout.createSequentialGroup()
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(248, 248, 248)))
+                            .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(AlteraTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ResponsavelTarefaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(ResponsavelTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AlterarTarefaLayout.setVerticalGroup(
@@ -486,13 +482,15 @@ public class ProjetoPOO extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TituloTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProgressoTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel20)
                     .addComponent(AlteraTaxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addComponent(jLabel22)
+                .addGap(47, 47, 47)
+                .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel22)
+                    .addComponent(ResponsavelTarefaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AlterarTarefaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -503,9 +501,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(AlterarTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ResponsavelTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ConfirmarRespTarefa))
+                        .addComponent(ResponsavelTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 123, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1489,7 +1485,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_ProcurarProjetoNomeActionPerformed
 
     private void NovaTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaTarefaBotaoActionPerformed
-        // TODO add your handling code here:
+        MenuProjNaoConc.setVisible(false);
+        CriarTarefa.setVisible(true);
     }//GEN-LAST:event_NovaTarefaBotaoActionPerformed
 
     private void EliminarTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarTarefaBotaoActionPerformed
@@ -1497,12 +1494,45 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarTarefaBotaoActionPerformed
 
     private void AlterarTarefaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarTarefaBotaoActionPerformed
+        String dd[] = new String[projetoSelec.getPessoas().size()];
         String t = ListaTarefas.getSelectedValue();
+        Tarefa tar = null;
+        double aux =0;
+        int aux2 =0; 
         for(int k =0;k<projetoSelec.getTarefas().size();k++ ){
-            if(projetoSelec.getTarefas().get(k).getNome().equals(t)){
-                
+            if(projetoSelec.getTarefas().get(k).getNome().equals(t) ){
+                TituloTarefa.setText(t);
+                tar = projetoSelec.getTarefas().get(k);
+                if(projetoSelec.getTarefas().get(k).getPessoa() != null){
+                    ResponsavelTarefaAtual.setText(projetoSelec.getTarefas().get(k).getPessoa().getNome());
+                    dd[0] = projetoSelec.getTarefas().get(k).getPessoa().getNome();
+                    aux2=1;
+                }
+                ProgressoTarefa.setValue(projetoSelec.getTarefas().get(k).getTaxaExecucao());
+                break;
             }
         }
+        for(int i = 0;i<projetoSelec.getPessoas().size();i++){
+            aux=0;
+            for(int j=0;j<projetoSelec.getTarefas().size();j++){
+                if(projetoSelec.getTarefas().get(j).getPessoa() != null){
+                    if(projetoSelec.getTarefas().get(j).getPessoa().getNome().equals(projetoSelec.getPessoas().get(i).getNome())&& projetoSelec.getTarefas().get(j).getTaxaExecucao() != 100){
+                        aux+=projetoSelec.getTarefas().get(j).getEsforco();
+                    }
+                }
+                
+            }
+            System.out.println(tar.getTipo() + " "+ tar.getEsforco());
+            if(aux+tar.getEsforco()<=1){
+                dd[aux2] = projetoSelec.getPessoas().get(i).getNome();
+                System.out.println(dd[aux2]);
+                aux2++;
+            }
+            
+        }
+        
+        
+        ResponsavelTarefa.setModel(new javax.swing.DefaultComboBoxModel<>(dd));
         MenuProjNaoConc.setVisible(false);
         AlterarTarefa.setVisible(true);
     }//GEN-LAST:event_AlterarTarefaBotaoActionPerformed
@@ -1512,7 +1542,35 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_EscolherEstadoTarefaActionPerformed
 
     private void SubAlterarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubAlterarTarefaActionPerformed
-        // TODO add your handling code here:
+        int t;
+        t = Integer.parseInt(AlteraTaxa.getText());
+        String nome;
+        nome = (String)ResponsavelTarefa.getSelectedItem();
+        Pessoa p = null;
+        int aux = 0;
+        try{
+        if(Integer.parseInt(AlteraTaxa.getText()) <0 || Integer.parseInt(AlteraTaxa.getText()) >100){
+            //erroooooooooooooo
+        }
+        else{
+            for(int i= 0;i<pessoas.size();i++){
+                if(pessoas.get(i).getNome().equals(nome)){
+                    p=pessoas.get(i);
+                }
+            }
+            for(int i=0;i<projetoSelec.getTarefas().size();i++){
+                if(projetoSelec.getTarefas().get(i).getNome().equals(TituloTarefa.getText())){
+                    projetoSelec.getTarefas().get(i).setTaxaExecucao(Integer.parseInt(AlteraTaxa.getText()));
+                    projetoSelec.getTarefas().get(i).setPessoa(p);
+                }
+            }
+            AlterarTarefa.setVisible(false);
+            MenuPrincipal.setVisible(true);
+        }
+        }catch(Exception e){
+        
+    }
+        
     }//GEN-LAST:event_SubAlterarTarefaActionPerformed
 
     private void addInvPrincActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addInvPrincActionPerformed
@@ -1575,10 +1633,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private void ResponsavelTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResponsavelTarefaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ResponsavelTarefaActionPerformed
-
-    private void ConfirmarRespTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarRespTarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ConfirmarRespTarefaActionPerformed
 
     private void NomeTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeTarefaActionPerformed
         // TODO add your handling code here:
@@ -1660,9 +1714,24 @@ public class ProjetoPOO extends javax.swing.JFrame {
         }
         else{
             Data data = new Data(Integer.parseInt(ctDia.getText()),Integer.parseInt(ctMes.getText()),Integer.parseInt(ctAno.getText()));
-            projetos.get(projetos.indexOf(projetoSelec)).setTarefa(new Tarefa(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
-            projetoSelec.setTarefa(new Tarefa(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
-            
+           
+            String t = (String)TipoTarefaCriar.getSelectedItem(); 
+            if(t.equals("Design")){
+                projetoSelec.setTarefa(new Design(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
+            }
+            else if(t.equals("Desenvolvimento")){
+                projetoSelec.setTarefa(new Desenvolvimento(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
+            }
+            else{
+                projetoSelec.setTarefa(new Documentacao(data,Integer.parseInt(ctDuracaoprev.getText()), NomeTarefa.getText()));
+            }
+            try {
+                save();
+            } catch (IOException ex) {
+                Logger.getLogger(ProjetoPOO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            CriarTarefa.setVisible(false);
+            MenuPrincipal.setVisible(true);
             
         }
     }//GEN-LAST:event_SeguinteCriarTarefaActionPerformed
@@ -1792,6 +1861,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
         }
         fichPessoas.fechaLeitura();
     }
+    
     public static void main(String args[]) throws IOException {
        
        
@@ -1814,7 +1884,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JButton AlterarTarefaBotao;
     private javax.swing.JLabel AreaCusto;
     private javax.swing.JButton ConfirmarOrientador;
-    private javax.swing.JButton ConfirmarRespTarefa;
     private javax.swing.JButton CriarProj;
     private javax.swing.JPanel CriarProjeto;
     private javax.swing.JPanel CriarProjeto2;
@@ -1839,9 +1908,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JButton ProcurarProj;
     private javax.swing.JPanel ProcurarProjeto;
     private javax.swing.JComboBox<String> ProcurarProjetoNome;
+    private javax.swing.JProgressBar ProgressoTarefa;
     private javax.swing.JButton ProjConc;
     private javax.swing.JButton ProjNaoConc;
     private javax.swing.JComboBox<String> ResponsavelTarefa;
+    private javax.swing.JLabel ResponsavelTarefaAtual;
     private javax.swing.JButton Sair;
     private javax.swing.JButton SeguinteCriarProj;
     private javax.swing.JButton SeguinteCriarProjeto2;
@@ -1912,7 +1983,6 @@ public class ProjetoPOO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
