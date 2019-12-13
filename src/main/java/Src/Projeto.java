@@ -23,7 +23,16 @@ public class Projeto implements Serializable {
     private Docente invPrinc;
     private ArrayList<Pessoa> pessoas;
     private ArrayList<Tarefa> tarefas;
-
+    /**
+     * Esta classe contém a informação dos Projetos
+     * @param acronimo
+     * @param nome
+     * @param estado
+     * @param dataInic
+     * @param dataFim
+     * @param duracaoEstimada
+     * @param invPrinc
+     */
     public Projeto(String nome, String acronimo, Data dataInic, int duracaoEstimada, Docente invPrinc, ArrayList<Pessoa> pessoas) {
         this.nome = nome;
         this.acronimo = acronimo;

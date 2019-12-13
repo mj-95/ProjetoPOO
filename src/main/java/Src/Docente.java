@@ -16,12 +16,14 @@ import java.util.ArrayList;
 public class Docente extends Pessoa implements Serializable {
 
     /**
-     *
+     *Classe filha da classe Pessoa
+     *Esta classe tem todos os valores quanto às Pessoas que são Docentes
+     * @param nMecanografico
      */
     protected int nMecanografico;
 
     /**
-     *
+     * @param areaInvestigacao
      */
     protected String areaInvestigacao;
 

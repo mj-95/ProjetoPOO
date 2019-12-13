@@ -14,7 +14,9 @@ import java.util.ArrayList;
  * @author anita
  */
 public class Doutorado extends Bolseiro implements Serializable{
-    
+    /**
+     * Aqui tratamos das Pessoas que estão a tirar Doutorado que extende da Classe Bolseiro
+     */
     public Doutorado(Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
         super(dataInicBolsa, dataFinBolsa, nome, email);
     }

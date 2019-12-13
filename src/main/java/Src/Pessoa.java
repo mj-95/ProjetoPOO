@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public abstract class Pessoa implements Serializable{
     protected String nome;
     protected String email;
+    /**
+     * Esta classe contém a informação das Pessoas
+     * @param nome
+     * @param email
+     */
 
     public Pessoa(String nome, String email) {
         this.nome = nome;

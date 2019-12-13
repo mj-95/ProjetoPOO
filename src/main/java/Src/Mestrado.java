@@ -14,7 +14,9 @@ import java.util.ArrayList;
  * @author anita
  */
 public class Mestrado extends Bolseiro implements Serializable{
-
+    /**
+     * Aqui tratamos das Pessoas que estão no Mestrado e que extende da Classe Bolseiro
+     */
     public ArrayList<String> getDocentes() {
         return docentes;
     }

@@ -20,7 +20,10 @@ import java.io.IOException;
 public class FicheiroDeTexto {
     private BufferedReader fR;
     private BufferedWriter fW;
-    
+    /**
+     * Esta classe contem os metodos necessarios para abrir e ler e escrever nos ficheiro de texto
+     * @return
+     */ 
     public void abreLeitura(String nomeDoFicheiro) throws IOException {
         fR = new BufferedReader(new FileReader(nomeDoFicheiro));
        

@@ -15,7 +15,9 @@ import java.util.ArrayList;
  */
 public class Licenciado extends Bolseiro implements Serializable{
     private ArrayList<String> docentes;
-
+    /**
+     * Aqui tratamos das Pessoas que estao na Licenciatura e que extende da Classe Bolseiro
+     */
     public Licenciado(ArrayList<String> docentes, Data dataInicBolsa, Data dataFinBolsa, int custoProjeto, String nome, String email) {
         super(dataInicBolsa, dataFinBolsa, nome, email);
         this.docentes = docentes;

@@ -18,9 +18,10 @@ public abstract class Bolseiro extends Pessoa implements Serializable{
     protected Data dataFinBolsa;
     protected int custoProjeto;
     
-/**
-*Nesta classe encontram-se a data de inicio e fim da bolsa e custo do projeto. Esta classe extend da classe Pessoa
-*/
+    /**
+     *Classe filha da classe Pessoa
+     *Esta classe tem todos os valores quanto às Pessoas que são Bolseiros
+     */
 
     public Bolseiro(Data dataInicBolsa, Data dataFinBolsa, String nome, String email) {
         super(nome, email);

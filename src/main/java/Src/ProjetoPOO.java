@@ -42,7 +42,7 @@ public class ProjetoPOO extends javax.swing.JFrame {
     protected ArrayList <String> auxPessoas[];
     
     /**
-     *
+     *Classe main no Projeto, inicializa a interface e ler,abre e guarda os ficheiros de texto e objetos
      * @throws IOException
      * @throws ClassNotFoundException
      */
