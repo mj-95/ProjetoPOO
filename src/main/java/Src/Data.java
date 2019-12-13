@@ -1,20 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Src;
 
 import java.io.Serializable;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class Data implements Serializable {
     private int dia;
     private int mes;
     private int ano;
+    /**
+     *Esta classe dá-nos a data em formato dia,mes, ano
+     */
 
     public Data(int dia, int mes, int ano) {
         this.dia = dia;

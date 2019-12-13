@@ -8,12 +8,17 @@ import java.io.*;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class FicheirosDeObjetos implements Serializable{
     private ObjectInputStream iS;
     private ObjectOutputStream oS;
-    
+
+    /**
+     * Esta classe contem os metodos necessarios para abrir e ler e escrever no ficheiro de objetos
+     * @return
+     */    
     
     public boolean abreLeitura(String nomeDoFicheiro) {
         try {

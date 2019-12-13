@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class Licenciado extends Bolseiro implements Serializable{
     private ArrayList<String> docentes;

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class Mestrado extends Bolseiro implements Serializable{
 

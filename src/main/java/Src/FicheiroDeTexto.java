@@ -14,7 +14,8 @@ import java.io.IOException;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class FicheiroDeTexto {
     private BufferedReader fR;

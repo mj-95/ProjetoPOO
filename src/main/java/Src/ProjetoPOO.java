@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class ProjetoPOO extends javax.swing.JFrame {
     

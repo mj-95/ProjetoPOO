@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class Projeto implements Serializable {
     private String nome;

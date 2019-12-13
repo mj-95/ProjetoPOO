@@ -11,7 +11,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public abstract class Pessoa implements Serializable{
     protected String nome;

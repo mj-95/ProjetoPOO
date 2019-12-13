@@ -9,10 +9,18 @@ import java.io.Serializable;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public class Design extends Tarefa implements Serializable{
-
+    /**
+     * Aqui tratamos da Tarefa Design que extende da Classe Tarefa
+     */
+    /**
+     * @param dataInic
+     * @param duracaoEstimada
+     * @param nome
+     */
     public Design(Data dataInic, int duracaoEstimada, String nome) {
         super(dataInic, duracaoEstimada,nome);
     }

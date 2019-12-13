@@ -10,12 +10,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author maria
+ * @author maria 
+ * @author anita
  */
 public abstract class Bolseiro extends Pessoa implements Serializable{
     protected Data dataInicBolsa;
     protected Data dataFinBolsa;
     protected int custoProjeto;
+    
+/**
+*Nesta classe encontram-se a data de inicio e fim da bolsa e custo do projeto. Esta classe extend da classe Pessoa
+*/
 
     public Bolseiro(Data dataInicBolsa, Data dataFinBolsa, String nome, String email) {
         super(nome, email);
@@ -23,6 +28,13 @@ public abstract class Bolseiro extends Pessoa implements Serializable{
         this.dataFinBolsa = dataFinBolsa;
         this.custoProjeto = 0;
     }
+    /**
+     * @param dataInicBolsa
+     * @param dataFinBolsa
+     * @param nome
+     * @param email
+     * @return
+    */
     public Bolseiro(String nome, String email) {
         super(nome, email);
     }
