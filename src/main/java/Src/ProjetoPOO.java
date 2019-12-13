@@ -20,11 +20,31 @@ import javax.swing.JOptionPane;
  */
 public class ProjetoPOO extends javax.swing.JFrame {
     
+    /**
+     *
+     */
     protected ArrayList <Pessoa> pessoas;
+
+    /**
+     *
+     */
     protected Projeto projetoSelec;
+
+    /**
+     *
+     */
     protected ArrayList <Projeto> projetos;
+
+    /**
+     *
+     */
     protected ArrayList <String> auxPessoas[];
     
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public ProjetoPOO() throws IOException, ClassNotFoundException {
         pessoas = new ArrayList<>();
         projetos = new ArrayList<>();
@@ -39,6 +59,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         initComponents();
     }
     
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void lerProjObj() throws IOException, ClassNotFoundException{
         FicheirosDeObjetos proj = new FicheirosDeObjetos();
         proj.abreLeitura("Proj.ser");
@@ -46,6 +71,10 @@ public class ProjetoPOO extends javax.swing.JFrame {
         proj.fechaLeitura();
     }
     
+    /**
+     *
+     * @throws IOException
+     */
     public void escrevePessoas() throws IOException{
         FicheiroDeTexto pes = new FicheiroDeTexto();
         pes.abreEscrita("FichPessoas.txt");
@@ -124,6 +153,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         }
         pes.fechaEscrita();
     }
+
+    /**
+     *
+     * @throws IOException
+     */
     public void save() throws IOException {
         FicheirosDeObjetos proj = new FicheirosDeObjetos();
         proj.abreEscrita("Proj.ser");
@@ -1803,7 +1837,8 @@ public class ProjetoPOO extends javax.swing.JFrame {
     }//GEN-LAST:event_TipoTarefaCriarActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param pessoas
+     * @throws java.io.IOException
      */
     public static void lerPessoas(ArrayList<Pessoa> pessoas) throws IOException {
         FicheiroDeTexto fichPessoas = new FicheiroDeTexto();
@@ -1862,6 +1897,11 @@ public class ProjetoPOO extends javax.swing.JFrame {
         fichPessoas.fechaLeitura();
     }
     
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String args[]) throws IOException {
        
        
